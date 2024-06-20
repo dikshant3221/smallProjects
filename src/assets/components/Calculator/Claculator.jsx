@@ -15,7 +15,8 @@ const Calculator = () => {
 
   const handleCalculate = () => {
     try {
-      setResult(eval(input)); // Note: Using eval is not recommended in production code due to security risks.
+      const result = new Function('return ' + input)();
+      setResult(result.toString());
     } catch (error) {
       setResult("Error");
     }
