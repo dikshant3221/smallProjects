@@ -5,7 +5,8 @@ import Counter from "../Counter/Counter";
 import Stopwatch from "../StopWatch/StopWatch";
 import TodoApp from "../TodoApp/TodoApp";
 import "../projects/projects.css";
-import Eventmanager from "../EventManager/Eventmanager"
+import Eventmanager from "../EventManager/Eventmanager";
+import ExpenseSplitter from "../ExpenseCalculator/ExpenseSplitter"
 
 const Projects = () => {
   const [selectedApp, setSelectedApp] = useState(null);
@@ -28,6 +29,8 @@ const Projects = () => {
     return <Todo onClose={closeProjects} />;
   } else if (selectedApp === "EventManager") {
     return <Event onClose={closeProjects} />;
+  } else if (selectedApp === "ExpenseSplitter") {
+    return <Expense onClose={closeProjects} />;
   }
 
   return (
@@ -43,7 +46,7 @@ const Projects = () => {
             </svg>
           </div>
           <div>
-            <h3 className="fs-2 text-body-emphasis">Counter App</h3>
+            <h3 className="fs-2 text-body-emphasis">Expense Splitter</h3>
             <p>
               Here is a Counter App made using React that tracks and updates the
               count based on the number of times the Add, Minus, and Delete
@@ -51,7 +54,7 @@ const Projects = () => {
             </p>
             <button
               className="btn btn-primary"
-              onClick={() => openApp("Counter")}
+              onClick={() => openApp("ExpenseSplitter")}
             >
               Open App
             </button>
@@ -211,7 +214,16 @@ const Event = ({ onClose }) => (
   <div>
     <Eventmanager />
     <button className="btn btn-primary" onClick={onClose}>
-      Close TodoApp
+      Close Event Manager App
+    </button>
+  </div>
+);
+
+const Expense = ({ onClose }) => (
+  <div>
+    <ExpenseSplitter />
+    <button className="btn btn-primary" onClick={onClose}>
+      Close Expense Splitter App
     </button>
   </div>
 );
